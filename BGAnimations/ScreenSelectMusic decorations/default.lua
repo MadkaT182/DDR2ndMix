@@ -60,4 +60,10 @@ t[#t+1] = Def.ActorFrame {
 	}
 };
 
+t[#t+1] = Def.ActorFrame {
+	LoadActor( "../norm_stage" )..{
+		OnCommand=cmd(x,SCREEN_CENTER_X+143;y,SCREEN_CENTER_Y-162;draworder,1);
+	}
+};
+
 return t
