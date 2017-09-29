@@ -25,14 +25,16 @@ local t = Def.ActorFrame {
 		else
 			local topscreen = SCREENMAN:GetTopScreen();
 			local MusicWheel = topscreen:GetMusicWheel();
-			local mType = MusicWheel:GetSelectedType();
-			Path = THEME:GetPathG("Common","fallback banner");
-			if mType == "WheelItemDataType_Roulette" then
-				c.SBanner:diffusealpha(0);
-				c.SRoulette:diffusealpha(1);
-			else
-				c.SRoulette:diffusealpha(0);
-				c.SBanner:LoadBanner(Path);
+			if MusicWheel:GetCurrentIndex() ~= 0 then
+				local mType = MusicWheel:GetSelectedType();
+				Path = THEME:GetPathG("Common","fallback banner");
+				if mType == "WheelItemDataType_Roulette" then
+					c.SBanner:diffusealpha(0);
+					c.SRoulette:diffusealpha(1);
+				else
+					c.SRoulette:diffusealpha(0);
+					c.SBanner:LoadBanner(Path);
+				end
 			end
 		end
 	end;
