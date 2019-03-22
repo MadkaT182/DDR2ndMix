@@ -8,7 +8,7 @@ local function CreditsText(playr)
 	return LoadFont("ScreenSystemLayer credits normal")..{
 		InitCommand=cmd(x,posX;y,SCREEN_BOTTOM-16;playcommand,"Refresh");
 		RefreshCommand=function(self)
-			if GAMESTATE:GetCoinMode() == 'CoinMode_Free' then
+			if GAMESTATE:GetCoinMode() == 'CoinMode_Free' or GAMESTATE:GetCoinMode() == 'CoinMode_Home' then
 				self:diffusealpha(0);
 			elseif GAMESTATE:IsEventMode() then
 				self:diffusealpha(0);

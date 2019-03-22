@@ -4,28 +4,10 @@ end
 
 local Prefs =
 {
-	BOOT =
+	EnableCodes =
 	{
 		Default = false,
 		Choices = { OptionNameString('Off'), OptionNameString('On') },
-		Values = { false, true }
-	},
-	SONGOPT =
-	{
-		Default = 'No',
-		Choices = { OptionNameString('No'), OptionNameString('DDR'), OptionNameString('PRO') },
-		Values = { 'No', 'DDR', 'PRO' }
-	},
-	COMBOU =
-	{
-		Default = false,
-		Choices = { OptionNameString('Off'), OptionNameString('On') },
-		Values = { false, true }
-	},
-	HDEFNS =
-	{
-		Default = false,
-		Choices = { OptionNameString('No'), OptionNameString('Yes') },
 		Values = { false, true }
 	},
 }

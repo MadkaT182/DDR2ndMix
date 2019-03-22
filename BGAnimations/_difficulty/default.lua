@@ -27,7 +27,7 @@ end
 if sides then
 	if sides == 1 then
 		t[#t+1] = Def.ActorFrame {
-			LoadFont("_diff")..{
+			LoadFont("_difficulty")..{
 			InitCommand=cmd(addy,-72);
 				OnCommand=function(self)
 					if string.len(difP1) > 0 then
@@ -45,7 +45,7 @@ if sides then
 		--Both sides
 		if difP1 == difP2 then
 			t[#t+1] = Def.ActorFrame {
-				LoadFont("_diff")..{
+				LoadFont("_difficulty")..{
 				InitCommand=cmd(addy,-72);
 					OnCommand=function(self)
 					self:settext(difP1);
@@ -57,7 +57,7 @@ if sides then
 			};
 		else
 			t[#t+1] = Def.ActorFrame {
-				LoadFont("_diff")..{
+				LoadFont("_difficulty")..{
 				InitCommand=cmd(addy,-86;addx,-94);
 					OnCommand=function(self)
 					self:horizalign(right);
@@ -67,7 +67,7 @@ if sides then
 					end
 					end;
 				};
-				LoadFont("_diff")..{
+				LoadFont("_difficulty")..{
 				InitCommand=cmd(addy,-86;addx,98);
 					OnCommand=function(self)
 					self:horizalign(left);

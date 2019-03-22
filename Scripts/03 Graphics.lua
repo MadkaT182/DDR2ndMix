@@ -97,3 +97,55 @@ local DiscNumber = DiscImg[songtit] or "fallback"
 return DiscNumber;
 
 end
+
+function GetDifficultyName(difficulty)
+	local Names = {
+		[1] = "SIMPLE",
+		[2] = "MODERATE",
+		[3] = "ORDINARY",
+		[4] = "SUPERIOR",
+		[5] = "MARVELOUS",
+		[6] = "GENUINE",
+		[7] = "PARAMOUNT",
+		[8] = "EXORBITANT",
+		[999] = ""
+	}
+	local DiffName = Names[difficulty] or "EXORBITANT";
+	return DiffName;
+end
+
+function GetDifficultyColor(difficulty)
+	local Colors = {
+		["Difficulty_Beginner"] = "#009CDE",
+		["Difficulty_Easy"] = "#E7D94A",
+		["Difficulty_Medium"] = "#F74A39",
+		["Difficulty_Hard"] = "#38B192",
+		["Difficulty_Challenge"] = "#6568DD",
+		["Difficulty_Edit"] = "#FFFFFF",
+	}
+	local Color = Colors[difficulty] or "#FFFFFF";
+	return Color;
+end
+
+function GetModeColor()
+	local Colors = {
+		["Easy"] = "#60C878",
+		["Normal"] = "#FFC86B",
+		["Hard"] = "#8CADE7",
+	}
+	local Color = Colors[GMode] or "#FFFFFF";
+	return Color;
+end
+
+function GetDiffLblColor(difficulty)
+	local Colors = {
+		["Difficulty_Beginner"] = "#43B0DE",
+		["Difficulty_Easy"] = "#FFC86B",
+		["Difficulty_Medium"] = "#FF7384",
+		["Difficulty_Hard"] = "#7FCA92",
+		["Difficulty_Challenge"] = "#738CD4",
+		["Difficulty_Edit"] = "#FFFFFF",
+	}
+	local Color = Colors[difficulty] or "#FFFFFF";
+	return Color;
+end

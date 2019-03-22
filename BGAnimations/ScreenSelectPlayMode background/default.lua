@@ -9,6 +9,6 @@ return Def.ActorFrame {
 		OnCommand=cmd(x,SCREEN_CENTER_X+261;y,418);
 	};
 	LoadActor( "title" )..{
-		OnCommand=cmd(x,SCREEN_CENTER_X;y,26);
+		OnCommand=cmd(x,SCREEN_CENTER_X;y,30);
 	};
 }

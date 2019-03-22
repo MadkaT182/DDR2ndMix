@@ -29,6 +29,7 @@ t[#t+1] = Def.ActorFrame {
 t[#t+1] = Def.ActorFrame {
 	LoadActor( "bnrframe" )..{
 		OnCommand=cmd(zoomx,1.07;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-93;diffusealpha,.5);
+		OffCommand=cmd(diffusealpha,0);
 	}
 };
 
@@ -63,7 +64,30 @@ t[#t+1] = Def.ActorFrame {
 t[#t+1] = Def.ActorFrame {
 	LoadActor( "../norm_stage" )..{
 		OnCommand=cmd(x,SCREEN_CENTER_X+143;y,SCREEN_CENTER_Y-162;draworder,1);
-	}
+		OffCommand=cmd(diffusealpha,0);
+	};
+	LoadFont("_system2")..{
+		Text=GMode;
+		OnCommand=cmd(x,SCREEN_CENTER_X-193;y,SCREEN_CENTER_Y-162;horizalign,left;draworder,1;diffuse,color(GetModeColor()));
+		OffCommand=cmd(diffusealpha,0);
+	};
+	LoadActor("player")..{
+		OnCommand=cmd(y,SCREEN_CENTER_Y);
+	};
+};
+
+t[#t+1] = Def.ActorFrame {
+	LoadActor( "diff" )..{
+		OnCommand=cmd(x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y+153);
+	};
+	LoadActor( "title" )..{
+		OnCommand=cmd(x,SCREEN_CENTER_X+122;y,SCREEN_CENTER_Y+25);
+	};
+	-- LoadFont("_system2")..{
+	-- 	OnCommand=cmd(Center);
+	-- 	SetCommand=cmd(diffusealpha,0;settext,"Toasty";linear,1;diffusealpha,1);
+	-- 	SongOptionsChangedMessageCommand=cmd(playcommand,"Set");
+	-- };
 };
 
 return t
