@@ -1,3 +1,46 @@
+-- Show the endings
+function DDRCredits()
+	if GAMESTATE:IsEventMode() then
+		return SelectMusicOrCourse();
+	end
+	if STATSMAN:GetCurStageStats():AllFailed() then
+		return "ScreenGameOver";
+	else
+		if STATSMAN:GetBestFinalGrade() == 'Grade_Tier01' or STATSMAN:GetBestFinalGrade() == 'Grade_Tier02' then
+			local newSong = SONGMAN:FindSong("LOVE IS THE POWER");
+			local newStep = newSong:GetOneSteps('StepsType_Dance_Single','Difficulty_Easy');
+			if newSong and newStep then
+				GAMESTATE:SetCurrentSong(newSong);
+				for player in ivalues(GAMESTATE:GetHumanPlayers()) do
+					GAMESTATE:AddStageToPlayer(player);
+					GAMESTATE:ResetPlayerOptions(player);
+					GAMESTATE:GetPlayerState(player):GetPlayerOptions('ModsLevel_Preferred'):FailSetting('FailType_Off');
+					GAMESTATE:SetCurrentSteps(player,newStep);
+				end
+				return "ScreenEndingBest";
+			else
+				if GMode == "Easy" then
+					return "ScreenThanksEasy";
+				else
+					-- if GotExtra then
+					-- 	return "ScreenSpecialEnd";
+					-- end
+					return "ScreenThanksNormal";
+				end
+			end
+		else
+			if GMode == "Easy" then
+				return "ScreenThanksEasy";
+			else
+				-- if GotExtra then
+				-- 	return "ScreenSpecialEnd";
+				-- end
+				return "ScreenThanksNormal";
+			end
+		end
+	end
+end
+
 function SMOnlineScreen()
 	for pn in ivalues(GAMESTATE:GetHumanPlayers()) do
 		if not IsSMOnlineLoggedIn(pn) then
@@ -111,7 +154,7 @@ Branch = {
 			if not GAMESTATE:IsCourseMode() then
 				return "ScreenEvaluationSummary"
 			else
-				return GameOverOrContinue()
+				return DDRCredits()
 			end
 		else
 			return SelectMusicOrCourse()
@@ -222,7 +265,7 @@ Branch = {
 		return IsNetConnected() and "ScreenTitleMenu" or "ScreenTitleMenu"
 	end,
  	AfterSaveSummary = function()
-		return GameOverOrContinue()
+		return DDRCredits()
 	end,
 	AfterContinue = function()
 		if GAMESTATE:GetNumPlayersEnabled() == 0 then
