@@ -12,13 +12,13 @@ local PlayModes = {
 	["Norm"] = {
 		xpos = 0,
 		ypos = -96,
-		stageamm = 3,
+		stageamm = PREFSMAN:GetPreference("SongsPerPlay"),
 	},
 	-- hard
 	["Hard"] = {
 		xpos = 201,
 		ypos = -96,
-		stageamm = 5,
+		stageamm = PREFSMAN:GetPreference("SongsPerPlay"),
 	},
 }
 
@@ -43,9 +43,12 @@ t[#t+1] = Def.ActorFrame {
 		GainFocusCommand=cmd(stoptweening;diffusealpha,1;decelerate,.15;y,0;zoom,1);
 		LoseFocusCommand=cmd(stoptweening;diffusealpha,0;decelerate,.15;y,2;zoom,.7485);
 	};
-
 	LoadActor("_mode/lbl_"..gc:GetName())..{
 		GainFocusCommand=cmd(stoptweening;decelerate,.15;y,-10;zoom,1;rainbow);
+		LoseFocusCommand=cmd(stoptweening;decelerate,.15;y,2;zoom,.61;stopeffect;diffuse,1,1,1,1);
+	};
+	LoadActor("_mode/lbl_"..gc:GetName())..{
+		GainFocusCommand=cmd(stoptweening;decelerate,.15;y,-10;zoom,1;diffusealpha,.7);
 		LoseFocusCommand=cmd(stoptweening;decelerate,.15;y,2;zoom,.61;stopeffect;diffuse,1,1,1,1);
 	};
 	LoadFont("_style")..{
