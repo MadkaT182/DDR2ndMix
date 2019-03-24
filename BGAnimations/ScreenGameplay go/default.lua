@@ -1,4 +1,12 @@
-local t = Def.ActorFrame {};
+local t = Def.ActorFrame {
+	StartTransitioningCommand=function(self)
+		local test = SCREENMAN:GetTopScreen():GetChild("SongBackground"):GetChild("")
+    	local BGBrightness = test:GetChild("")[5]:GetChild("BrightnessOverlay")
+    	for i=1,3 do
+        	BGBrightness[i]:finishtweening():linear(0.4):diffuse(Color.White)
+    	end
+	end;
+};
 
 t[#t+1] = Def.ActorFrame {
 	LoadActor( "go" )..{
